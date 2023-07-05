@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NAMA" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="EMAIL"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="JURUSAN"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SEMESTER"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
+</LinearLayout>
+    <!-- activity_main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp">
+
+<TextView
+    android:id="@+id/textViewName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="18sp"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/textViewEmail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="16sp" />
+
+<TextView
+    android:id="@+id/textViewJurusan"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="16sp" />
+
+<TextView
+    android:id="@+id/textViewSemester"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="16sp" />
+
+</LinearLayout>
+
+    import android.os.Bundle
+    import androidx.appcompat.app.AppCompatActivity
+    import kotlinx.android.synthetic.main.activity_login.*
+    import kotlinx.android.synthetic.main.activity_main.*
+
+    class MainActivity : AppCompatActivity() {
+
+    private val dummyData = DummyData("John Doe", "johndoe@example.com", "Computer Science", "5")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_login)
+
+    buttonLogin.setOnClickListener {
+    val username = editTextUsername.text.toString()
+    val password = editTextPassword.text.toString()
+
+    // Cek username dan password
+    if (username == "admin" && password == "password") {
+    showData()
+    }
+    }
+    }
+
+    private fun showData() {
+    setContentView(R.layout.activity_main)
+
+    textViewName.text = dummyData.name
+    textViewEmail.text = dummyData.email
+    textViewJurusan.text = dummyData.jurusan
+    textViewSemester.text = dummyData.semester
